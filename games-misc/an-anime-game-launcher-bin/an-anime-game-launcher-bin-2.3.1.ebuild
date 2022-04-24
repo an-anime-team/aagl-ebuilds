@@ -6,7 +6,7 @@ EAPI=8
 
 DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling"
 HOMEPAGE="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
-#SRC_URI="https://cdn.discordapp.com/attachments/967406033800679455/967710318258176020/an-anime-game-launcher-bin.tar.gz"
+SRC_URI="https://cdn.discordapp.com/attachments/967406033800679455/967710318258176020/an-anime-game-launcher-bin.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
