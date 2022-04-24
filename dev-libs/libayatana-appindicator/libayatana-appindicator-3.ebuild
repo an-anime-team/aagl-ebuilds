@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Ayatana Application Indicators Shared Library"
 HOMEPAGE="https://github.com/AyatanaIndicators/libayatana-appindicator"
-SRC_URI="https://cdn.discordapp.com/attachments/967406033800679455/967495962283085864/libs.tar.gz"
+SRC_URI="https://gitlab.com/an-anime-team/aagl-ebuilds/-/archive/libayatana/aagl-ebuilds-libayatana.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -16,6 +16,12 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 S="${WORKDIR}"
+src_unpack(){
+	unpack "the-anime-game-libayatana.tar.gz"
+}
+src_prepare(){
+	cd "the-anime-game-libayatana.tar.gz"
+}
 src_install(){
 	dodir /usr/lib64/
 	cp -R "${S}/libayatana-indicator3.so.7.0.0" "${D}/usr/lib64" || die "Failed to Copy"
