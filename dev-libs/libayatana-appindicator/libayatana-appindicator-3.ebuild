@@ -21,6 +21,7 @@ src_unpack(){
 }
 src_prepare(){
 	cd "aagl-ebuilds-libayatana"
+	eapply_user
 }
 src_install(){
 	dodir /usr/lib64/
