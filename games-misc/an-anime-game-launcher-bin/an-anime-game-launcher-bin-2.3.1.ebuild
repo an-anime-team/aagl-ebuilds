@@ -33,6 +33,7 @@ src_unpack(){
 	unpack "the-anime-game-2.3.1.tar.gz" || die "Extraction Failed"
 }
 src_prepare(){
+	cd "the-anime-game-2.3.1"
 	chmod +x "${S}/An_Anime_Game_Launcher.AppImage"
     "${S}/An_Anime_Game_Launcher.AppImage" --appimage-extract || die "Extraction Failed"
 	chrpath -d "${S}/squashfs-root/public/discord-rpc/discord-rpc"
