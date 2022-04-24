@@ -29,6 +29,9 @@ BDEPEND="
 app-admin/chrpath"
 
 S="${WORKDIR}"
+src_unpack(){
+	unpack "the-anime-game-2.3.1"
+}
 src_prepare(){
 	chmod +x "${S}/An_Anime_Game_Launcher.AppImage"
     "${S}/An_Anime_Game_Launcher.AppImage" --appimage-extract || die "Extraction Failed"
