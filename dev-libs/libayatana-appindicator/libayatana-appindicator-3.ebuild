@@ -20,7 +20,7 @@ src_unpack(){
 	unpack "aagl-ebuilds-libayatana.tar.gz"
 }
 src_prepare(){
-	cd "aagl-ebuilds-libayatana.tar.gz"
+	cd "aagl-ebuilds-libayatana"
 }
 src_install(){
 	dodir /usr/lib64/
