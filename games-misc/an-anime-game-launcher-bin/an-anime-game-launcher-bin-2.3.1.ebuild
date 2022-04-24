@@ -6,7 +6,7 @@ EAPI=8
 
 DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling"
 HOMEPAGE="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
-SRC_URI="https://gitlab.com/gentoobuilds/the-anime-game/-/archive/2.3.1/the-anime-game-2.3.1.tar.gz"
+SRC_URI="https://gitlab.com/an-anime-team/aagl-ebuilds/-/archive/2.3.1/the-anime-game-2.3.1.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
@@ -32,12 +32,12 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 app-admin/chrpath"
 
-S="${WORKDIR}/the-anime-game-2.3.1"
+S="${WORKDIR}/aagl-ebuilds-2.3.1"
 src_unpack(){
-	unpack "the-anime-game-2.3.1.tar.gz" || die "Extraction Failed"
+	unpack "aagl-ebuilds-2.3.1.tar.gz" || die "Extraction Failed"
 }
 src_prepare(){
-	cd "the-anime-game-2.3.1"
+	cd "aagl-ebuilds-2.3.1"
 	chmod +x "${S}/An_Anime_Game_Launcher.AppImage"
     "${S}/An_Anime_Game_Launcher.AppImage" --appimage-extract || die "Extraction Failed"
 	chrpath -d "${S}/squashfs-root/public/discord-rpc/discord-rpc"

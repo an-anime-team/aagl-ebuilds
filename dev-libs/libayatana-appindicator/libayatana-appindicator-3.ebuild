@@ -17,10 +17,10 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 S="${WORKDIR}"
 src_unpack(){
-	unpack "the-anime-game-libayatana.tar.gz"
+	unpack "aagl-ebuilds-libayatana.tar.gz"
 }
 src_prepare(){
-	cd "the-anime-game-libayatana.tar.gz"
+	cd "aagl-ebuilds-libayatana.tar.gz"
 }
 src_install(){
 	dodir /usr/lib64/
