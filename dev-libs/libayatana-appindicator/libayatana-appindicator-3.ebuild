@@ -15,7 +15,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
-S="${WORKDIR}/aggl-ebuilds-libayatana"
 src_unpack(){
 	unpack "aagl-ebuilds-libayatana.tar.gz"
 }
@@ -23,6 +22,7 @@ src_prepare(){
 	cd "aagl-ebuilds-libayatana"
 	eapply_user
 }
+S="${WORKDIR}/aggl-ebuilds-libayatana"
 src_install(){
 	dodir /usr/lib64/
 	cp -R "${S}/libayatana-indicator3.so.7.0.0" "${D}/usr/lib64" || die "Failed to Copy"
