@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 app-admin/chrpath"
 
-S="${WORKDIR}"
+S="${WORKDIR}/the-anime-game-2.3.1"
 src_unpack(){
 	unpack "the-anime-game-2.3.1.tar.gz" || die "Extraction Failed"
 }
