@@ -30,7 +30,7 @@ app-admin/chrpath"
 
 S="${WORKDIR}"
 src_unpack(){
-	unpack "the-anime-game-2.3.1"
+	unpack "the-anime-game-2.3.1.tar.gz" || die "Extraction Failed"
 }
 src_prepare(){
 	chmod +x "${S}/An_Anime_Game_Launcher.AppImage"
