@@ -13,9 +13,9 @@ KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="
-dev-libs/libayatana-appindicator
+dev-libs/libayatana-appindicator-bin
 net-libs/webkit-gtk
-dev-util/xdelta
+dev-util/xdelta[lzma]
 app-arch/tar
 dev-vcs/git
 app-arch/unzip
@@ -37,28 +37,40 @@ src_unpack(){
 }
 src_prepare(){
 	cd "aagl-ebuilds-2.3.1"
+	mv "${S}/icon.png" "${S}/${PN}.png"
+	mv "${S}/launcher.sh" "${S}/${PN}"
 	chmod +x "${S}/An_Anime_Game_Launcher.AppImage"
     "${S}/An_Anime_Game_Launcher.AppImage" --appimage-extract || die "Extraction Failed"
-	chrpath -d "${S}/squashfs-root/public/discord-rpc/discord-rpc"
-	dodir /usr/lib/
+	chrpath -d "${S}/squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	eapply_user
 
 }
 S="${WORKDIR}/aagl-ebuilds-2.3.1"
 src_install(){
-	dodir /usr/lib/${PN}
-	#mkdir "${D}/usr/lib/${PN}" || die "Creating Directory failed"
-	dodir /usr/lib/
-	cp -dr --no-preserve=ownership "${S}/squashfs-root/resources.neu" "${D}/usr/lib/${PN}/" || die "copy failed"
-    cp -dr --no-preserve=ownership "${S}/squashfs-root/an-anime-game-launcher" "${D}/usr/lib/${PN}/" || die "copy failed"
-	cp -dr --no-preserve=ownership "${S}/squashfs-root/public" "${D}/usr/lib/${PN}/" || die "copy failed"
-	dodir /etc/polkit-1/rules.d/
-	cp -dr --no-preserve=ownership "${S}/60-ananimegame.rules" "${D}/etc/polkit-1/rules.d/" || die "inserting Rules failed"
-	dodir /usr/share/pixmaps/
-	cp -dr --no-preserve=ownership "${S}/icon.png" "${D}/usr/share/pixmaps/${PN}.png" || die "copy failed"
-	dodir /usr/bin/
-	cp -dr --no-preserve=ownership "${S}/launcher.sh" "${D}/usr/bin/${PN}" || die "copy failed"
+	dodir "/usr/lib/${PN}"
+	insinto "/usr/lib/${PN}"
+	einfo "Inserting Launcher Files"
+	doins -r "${S}/squashfs-root/resources.neu"
+	einfo "Inserting Launcher Binary"
+    doins -r "${S}/squashfs-root/an-anime-game-launcher"
+	einfo "Setting Executable Permissions for Binary"
+	chmod +x "${D}/usr/lib/${PN}/an-anime-game-launcher"
+	einfo "Inserting More Launcher Files"
+	doins -r "${S}/squashfs-root/public"
+	einfo "Inserting Launcher polkit rules"
+	insinto "/etc/polkit-1/rules.d/"
+	doins "${S}/60-ananimegame.rules"
+	einfo "Inserting Icons"
+	insinto "/usr/share/pixmaps"
+	doins "${S}/${PN}.png" || die "Insertion Failed"
+	einfo "Inserting Start Script"
+	insinto "/usr/bin"
+	doins "${S}/${PN}" || die "Insertion Failed"
+	einfo "Setting Executable Permissions for Launch Script"
 	chmod +x "${D}/usr/bin/${PN}"
-	dodir /usr/share/applications/
-	cp -dr --no-preserve=ownership "${S}/an-anime-game-launcher-bin.desktop" "${D}/usr/share/applications" || die "copy failed"
+	einfo "Inserting Desktop Shortcut"
+	insinto "/usr/share/applications/"
+	doins "${S}/${PN}.desktop"
+	einfo "Setting Read Permissions for Launcher Files"
+	chmod -R 775 "${D}/usr/lib/${PN}/public"
 }

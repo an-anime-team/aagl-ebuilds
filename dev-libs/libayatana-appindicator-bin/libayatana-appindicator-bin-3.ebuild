@@ -24,11 +24,11 @@ src_prepare(){
 }
 S="${WORKDIR}/aagl-ebuilds-libayatana"
 src_install(){
-	dodir /usr/lib64/
-	cp -R "${S}/libayatana-indicator3.so.7.0.0" "${D}/usr/lib64" || die "Failed to Copy"
-	cp -R "${S}/libayatana-indicator3.so.7" "${D}/usr/lib64/" || die "Failed to Copy"
-	cp -R "${S}/libayatana-ido3-0.4.so.0.0.0" "${D}/usr/lib64" || die "Failed to Copy"
-	cp -R "${S}/libayatana-ido3-0.4.so.0" "${D}/usr/lib64" || die "Failed to Copy"
-	cp -R "${S}/libayatana-appindicator3.so.1.0.0" "${D}/usr/lib64" || die "Failed to Copy"
-	cp -R "${S}/libayatana-appindicator3.so.1" "${D}/usr/lib64" || die "Failed to Copy"
+	insinto /usr/lib64/
+	doins "${S}/libayatana-indicator3.so.7.0.0"
+	doins "${S}/libayatana-indicator3.so.7"
+	doins "${S}/libayatana-ido3-0.4.so.0.0.0"
+	doins "${S}/libayatana-ido3-0.4.so.0"
+	doins "${S}/libayatana-appindicator3.so.1.0.0"
+	doins "${S}/libayatana-appindicator3.so.1"
 }
