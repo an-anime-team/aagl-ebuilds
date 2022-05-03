@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Ayatana Application Indicators Shared Library
+EAPI=8
+HOMEPAGE=https://github.com/AyatanaIndicators/libayatana-appindicator
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=sys-libs/glibc >=dev-libs/glib-2.58 >=x11-libs/gtk+-3.24 dev-libs/libdbusmenu[gtk3] !dev-libs/libayatana-appindicator
+SLOT=0
+SRC_URI=https://gitlab.com/an-anime-team/aagl-ebuilds/-/archive/libayatana/aagl-ebuilds-libayatana.tar.gz
+_md5_=47ea4495024adbab4ad0fed4489cebf2
