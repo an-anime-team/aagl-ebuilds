@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	|| ( dev-libs/libayatana-appindicator-bin dev-libs/libayatana-appindicator ) \
+	|| ( dev-libs/libayatana-appindicator dev-libs/libayatana-appindicator-bin ) \
 	net-libs/webkit-gtk \
 	dev-util/xdelta[lzma] \
 	app-arch/tar \
