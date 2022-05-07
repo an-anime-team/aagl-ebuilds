@@ -37,6 +37,7 @@ S="${WORKDIR}/aagl-ebuilds-${PV}"
 src_prepare(){
 	mv "icon.png" "${PN}.png"
 	mv "launcher.sh" "${PN}"
+	chmod +x ./An_Anime_Game_Launcher.AppImage
 	./An_Anime_Game_Launcher.AppImage --appimage-extract || die "Extraction Failed"
 	chrpath -d "squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	eapply_user
