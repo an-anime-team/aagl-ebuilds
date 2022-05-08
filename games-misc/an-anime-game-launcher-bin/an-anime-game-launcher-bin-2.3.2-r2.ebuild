@@ -8,7 +8,7 @@ inherit xdg-utils optfeature
 DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package"
 HOMEPAGE="https://gitlab.com/an-anime-team/an-anime-game-launcher"
 SRC_URI="https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/003620e21b2d8d70385bac8f2a862846/An_Anime_Game_Launcher.AppImage"
-LICENSE="GPL-3"
+LICENSE="GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 PATCHES=( "${FILESDIR}/${PN}-launcher.patch" "${FILESDIR}/${PN}-desktop.patch" )

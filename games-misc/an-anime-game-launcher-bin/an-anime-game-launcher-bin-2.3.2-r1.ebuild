@@ -8,7 +8,7 @@ inherit xdg-utils
 DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package"
 HOMEPAGE="https://gitlab.com/an-anime-team/an-anime-game-launcher"
 SRC_URI="https://gitlab.com/an-anime-team/aagl-ebuilds/-/archive/${PV}/aagl-ebuilds-${PV}.tar.gz"
-LICENSE="GPL-3"
+LICENSE="GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 
