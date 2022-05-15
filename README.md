@@ -30,7 +30,7 @@ sync-uri = https://gitlab.com/an-anime-team/aagl-ebuilds.git
 priority = 100
 ```
 
-Then sync you local ebuild cache with
+Then sync your local ebuild cache with
 `emerge --sync`
 
 ### Installing the launcher
