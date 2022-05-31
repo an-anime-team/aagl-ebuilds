@@ -7,7 +7,7 @@ inherit xdg-utils optfeature
 
 DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package"
 HOMEPAGE="https://gitlab.com/an-anime-team/an-anime-game-launcher"
-SRC_URI="https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/88f073c0a961e054b91bac68126c0e13/An_Anime_Game_Launcher.AppImage"
+SRC_URI="https://gitlab.com/an-anime-team/an-anime-game-launcher/uploads/ab0744ac6e1c9df71b722193189137e7/An_Anime_Game_Launcher.AppImage -> ${P}.AppImage"
 LICENSE="GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -35,12 +35,12 @@ BDEPEND="app-admin/chrpath"
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P} || die
-	cp ${DISTDIR}/An_Anime_Game_Launcher.AppImage ${WORKDIR}/${P} || die
+	cp ${DISTDIR}/${P}.AppImage ${WORKDIR}/${P} || die
 }
 
 src_prepare(){
-	chmod +x An_Anime_Game_Launcher.AppImage
-	./An_Anime_Game_Launcher.AppImage --appimage-extract || die "Extraction Failed"
+	chmod +x ${P}.AppImage
+	./${P}.AppImage --appimage-extract || die "Extraction Failed"
 	chrpath -d "squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	default
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
