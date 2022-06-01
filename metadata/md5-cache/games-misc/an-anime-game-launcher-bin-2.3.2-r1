@@ -1,0 +1,14 @@
+BDEPEND=app-admin/chrpath
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( dev-libs/libayatana-appindicator dev-libs/libayatana-appindicator-bin ) net-libs/webkit-gtk dev-util/xdelta[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu app-emulation/dxvk-bin app-emulation/winetricks virtual/wine
+DESCRIPTION=Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package
+EAPI=8
+HOMEPAGE=https://gitlab.com/an-anime-team/an-anime-game-launcher
+INHERIT=xdg-utils
+KEYWORDS=~amd64
+LICENSE=GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense
+RDEPEND=|| ( dev-libs/libayatana-appindicator dev-libs/libayatana-appindicator-bin ) net-libs/webkit-gtk dev-util/xdelta[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu app-emulation/dxvk-bin app-emulation/winetricks virtual/wine
+SLOT=0
+SRC_URI=https://gitlab.com/an-anime-team/aagl-ebuilds/-/archive/2.3.2/aagl-ebuilds-2.3.2.tar.gz
+_eclasses_=xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e
+_md5_=7fa3047845bb3cc173c50f1e976ccb50
