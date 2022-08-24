@@ -10,7 +10,7 @@
 > Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
 > Exec=an-anime-game-launcher-bin
 8c6,8
-< X-AppImage-Version=2.3.5
+< X-AppImage-Version=2.3.8
 ---
 > Type=Application
 > Icon=an-anime-game-launcher-bin
