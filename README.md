@@ -26,7 +26,7 @@ If /etc/portage/repos.conf is a file, add the following lines to that file, if /
 [The-Anime-Game]
 location = /var/db/repos/theanimegame
 sync-type = git
-sync-uri = https://gitlab.com/an-anime-team/aagl-ebuilds.git
+sync-uri = https://github.com/an-anime-team/aagl-ebuilds.git
 priority = 100
 ```
 
