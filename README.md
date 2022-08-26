@@ -15,7 +15,7 @@ emerge --ask app-eselect/eselect-repository
 
 Now add the repository with
 ```
-eselect repository add The-Anime-Game git https://gitlab.com/an-anime-team/aagl-ebuilds.git
+eselect repository add The-Anime-Game git https://github.com/an-anime-team/aagl-ebuilds.git
 emerge --sync
 ```
 
