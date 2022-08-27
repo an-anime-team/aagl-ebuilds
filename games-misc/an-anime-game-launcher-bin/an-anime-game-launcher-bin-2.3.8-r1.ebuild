@@ -1,5 +1,5 @@
-# copyright 1999-2022 gentoo authors
-# Distributed under the terms of the GNU General Public License v2
+# copyright 2022 ShinobuNarusaka, Pascal Jager
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
