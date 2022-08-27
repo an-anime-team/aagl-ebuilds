@@ -7,7 +7,7 @@
 < Type=Application
 < Categories=Game;
 ---
-> Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+> Comment=A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
 > Exec=an-anime-game-launcher-bin
 8c6,8
 < X-AppImage-Version=2.3.8
