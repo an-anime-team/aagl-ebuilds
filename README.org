@@ -28,7 +28,7 @@ Now add the repository with
 
 #+begin_src bash
 eselect repository add The-Anime-Game git https://github.com/an-anime-team/aagl-ebuilds.git
-emerge --sync
+emaint sync -r The-Anime-Game
 #+end_src
 
 *** Manually
