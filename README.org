@@ -11,6 +11,7 @@
   - [[#installing-the-launcher][Installing the launcher]]
   - [[#fixing-crash-when-opening-config][Fixing crash when opening config]]
 - [[#uninstallation][Uninstallation]]
+- [[#trouble-after-gitlab-migration--syncing-trouble-in-general][Trouble after gitlab migration / syncing trouble in general]]
 #+END_QUOTE
 
 * Installation
@@ -88,3 +89,20 @@ rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually ad
 #OR
 eselect repository disable -f The-Anime-Game # if the repository was added via eselect
 #+end_src
+
+* Trouble after gitlab migration / syncing trouble in general
+If the original gitlab repository was used before, there could be some issues with the migration to a new repository.
+Also if you can not sync the repository because of git issue, this could be helpful.
+First of all, delete the old repository files:
+#+begin_src bash
+rm /var/db/repos/The-Anime-Game
+#+end_src
+
+Then purge the repository this is done differently, depending on how you installed the repository before.
+#+begin_src bash
+rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
+#OR
+eselect repository disable -f The-Anime-Game # if the repository was added via eselect
+#+end_src
+
+Now add the new repository according to the instructions in the [[Installation]] section.
