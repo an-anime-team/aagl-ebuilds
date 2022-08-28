@@ -25,9 +25,6 @@ DEPEND="
 	x11-libs/libnotify
 	sys-auth/polkit
 	dev-libs/libdbusmenu
-	app-emulation/dxvk-bin
-	app-emulation/winetricks
-	virtual/wine
 	"
 
 RDEPEND="${DEPEND}"
