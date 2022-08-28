@@ -46,7 +46,7 @@ sync-uri = https://github.com/an-anime-team/aagl-ebuilds.git
 priority = 100
 #+end_src
 
-Then sync your local ebuild cache with ~emerge --sync~
+Then sync your local ebuild cache with ~emaint sync -r The-Anime-Game~
 
 ** Installing the launcher
 After adding the repository you can emerge the launcher. There are
