@@ -205,6 +205,7 @@ DEPEND="
 	>=gui-libs/gtk-4
 	net-misc/iputils
 	sys-libs/glibc
+	sys-auth/polkit
 "
 	# net-libs/webkit-gtk
 	# x11-libs/libnotify

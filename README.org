@@ -9,6 +9,7 @@
     - [[#with-eselect-repository][With eselect-repository]]
     - [[#manually][Manually]]
   - [[#installing-the-launcher][Installing the launcher]]
+  - [[#fixing-crash-when-opening-config][Fixing crash when opening config]]
 - [[#uninstallation][Uninstallation]]
 #+END_QUOTE
 
@@ -60,6 +61,13 @@ emerge --ask games-misc/an-anime-game-launcher-gtk # for the gtk version
 #+end_src
 
 This can take a while if you don't have wine installed.
+
+** Fixing crash when opening config
+If the launcher crashes when you click on the little cog wheel to open the config, it is likely because it can not find the folder where different versions of dxvk should be stored. (See also https://github.com/an-anime-team/an-anime-game-launcher-gtk/issues/3)
+Check if the folder ~~/.local/share/anime-game-launcher/dxvks~ exists and if not, create it with
+#+begin_src bash
+mkdir ~/.local/share/anime-game-launcher/dxvks
+#+end_src
 
 * Uninstallation
 To uninstall just deselect the package and run a depclean
