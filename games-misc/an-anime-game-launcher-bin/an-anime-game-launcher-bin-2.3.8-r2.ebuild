@@ -57,8 +57,8 @@ src_install(){
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
-    exinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
-	doexe squashfs-root/public/discord-rpc squashfs-root/public/libdiscord-rpc.so
+    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
+	doexe "squashfs-root/public/discord-rpc" "squashfs-root/public/libdiscord-rpc.so"
 }
 
 pkg_postinst() {
