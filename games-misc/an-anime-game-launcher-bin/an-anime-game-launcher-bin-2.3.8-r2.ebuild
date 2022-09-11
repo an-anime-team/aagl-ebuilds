@@ -39,7 +39,7 @@ src_prepare(){
 	chmod +x ${P}.AppImage
 	./${P}.AppImage --appimage-extract || die "Extraction Failed"
 	default
-	chmod +x squashfs-root/public/discord-rpc/discord-rpc || die "Failed to set permissions"
+	chmod +x "squashfs-root/public/discord-rpc/discord-rpc"|| die "Failed to set permissions"
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
 	mv "squashfs-root/an-anime-game-launcher.desktop" "${PN}.desktop" || die
@@ -57,6 +57,8 @@ src_install(){
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
+	insinto "/usr/lib/public/"
+	doins -r "squashfs-root/public/discord-rpc"
 }
 
 pkg_postinst() {
