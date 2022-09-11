@@ -39,7 +39,6 @@ src_unpack() {
 src_prepare(){
 	chmod +x ${P}.AppImage
 	./${P}.AppImage --appimage-extract || die "Extraction Failed"
-	chrpath -d "squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	default
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
