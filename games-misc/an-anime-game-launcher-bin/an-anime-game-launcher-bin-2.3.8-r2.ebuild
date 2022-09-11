@@ -49,16 +49,27 @@ src_install(){
 	doins "squashfs-root/resources.neu"
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
-	doins -r "squashfs-root/public"
+    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
+	doexe "squashfs-root/public/discord-rpc/discord-rpc" "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
+	fperms "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
+
+	insinto "/usr/lib/${PN}/public"
+	doins -r "squashfs-root/public/discord-rpc"
+	doins -r "squashfs-root/public/dxvks.yaml"
+	doins -r "squashfs-root/public/hdiffpatch"
+	doins -r "squashfs-root/public/icons"
+	doins -r "squashfs-root/public/images"
+	doins -r "squashfs-root/public/locales"
+	doins -r "squashfs-root/public/neutralino.js"
+	doins -r "squashfs-root/public/runners.yaml"
+	doins -r "squashfs-root/public/shaders"
 	insinto "/usr/share/pixmaps"
 	doins "${PN}.png"
 	exeinto "/usr/bin"
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
-    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
-	doexe "squashfs-root/public/discord-rpc/discord-rpc" "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
-	fperms "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
+
 }
 
 pkg_postinst() {
