@@ -69,7 +69,7 @@ src_install(){
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
 
-	fperms 755 "/usr/lib/${PN}/discord-rpc/discord-rpc"
+	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 
 }
 
