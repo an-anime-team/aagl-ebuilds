@@ -19,8 +19,15 @@ DEPEND="
 	dev-util/xdelta[lzma]
 	app-arch/tar
 	dev-vcs/git
+	app-arch/unzip
+	net-misc/curl
 	app-arch/cabextract
+	x11-libs/libnotify
+	sys-auth/polkit
 	dev-libs/libdbusmenu
+	app-emulation/dxvk-bin
+	app-emulation/winetricks
+	virtual/wine
 	"
 
 RDEPEND="${DEPEND}"
