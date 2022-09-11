@@ -31,7 +31,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="app-admin/chrpath"
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P} || die

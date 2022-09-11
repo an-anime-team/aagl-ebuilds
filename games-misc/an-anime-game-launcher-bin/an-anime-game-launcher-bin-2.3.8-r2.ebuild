@@ -19,17 +19,12 @@ DEPEND="
 	dev-util/xdelta[lzma]
 	app-arch/tar
 	dev-vcs/git
-	app-arch/unzip
-	net-misc/curl
 	app-arch/cabextract
-	x11-libs/libnotify
-	sys-auth/polkit
 	dev-libs/libdbusmenu
 	"
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="app-admin/chrpath"
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P} || die
