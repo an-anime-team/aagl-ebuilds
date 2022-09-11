@@ -51,7 +51,6 @@ src_install(){
 	doexe "squashfs-root/an-anime-game-launcher"
     exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
 	doexe "squashfs-root/public/discord-rpc/discord-rpc" "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
-	fperms "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 
 	insinto "/usr/lib/${PN}/public"
 	doins -r "squashfs-root/public/discord-rpc"
