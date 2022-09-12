@@ -46,8 +46,8 @@ src_prepare(){
 }
 
 src_install(){
-	insinto "/usr/lib/"
-    doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
+	into "/usr/lib/"
+    dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
 	insinto "/usr/lib/${PN}"
 	doins "squashfs-root/resources.neu"
 	exeinto "/usr/lib/${PN}"
