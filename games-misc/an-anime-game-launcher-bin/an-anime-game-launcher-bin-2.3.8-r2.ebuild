@@ -46,16 +46,20 @@ src_prepare(){
 
 src_install(){
     exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc" # set path for discord-rpc binary
-	doexe "squashfs-root/public/discord-rpc/discord-rpc"  # set path for
-	into "/usr/lib/${PN}/discord-rpc/"
-    dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
+	doexe "${FILESDIR}/discord-rpc"  # install discord-rpc to path
+	into "/usr/lib/${PN}/discord-rpc/" # set path for library
+    dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so" # install lib
 
+	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc" # set permissions for discord-rpc
 
 	insinto "/usr/lib/${PN}"
 	doins "squashfs-root/resources.neu"
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
-	insinto "/usr/lib/${PN}/public"
+
+	insinto "/usr/lib/${PN}/public" # specify path for public folders
+
+	#copy all files/folders from squashfs-root/public
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
 	doins -r "squashfs-root/public/hdiffpatch"
@@ -65,10 +69,14 @@ src_install(){
 	doins -r "squashfs-root/public/neutralino.js"
 	doins -r "squashfs-root/public/runners.yaml"
 	doins -r "squashfs-root/public/shaders"
+
+	#create pix
 	insinto "/usr/share/pixmaps"
 	doins "${PN}.png"
+	#create bin
 	exeinto "/usr/bin"
 	doexe "${PN}"
+	#create desktop entry
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
 
@@ -77,7 +85,6 @@ src_install(){
 pkg_postinst() {
 	xdg_desktop_database_update
 	optfeature "Appindicator support" dev-libs/libayatana-appindicator dev-libs/libayatana-appindicator-bin
-	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 }
 pkg_postrm() {
 	xdg_desktop_database_update
