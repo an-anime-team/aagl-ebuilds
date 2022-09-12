@@ -95,7 +95,7 @@ If the original gitlab repository was used before, there could be some issues wi
 Also if you can not sync the repository because of git issue, this could be helpful.
 First of all, delete the old repository files:
 #+begin_src bash
-rm /var/db/repos/The-Anime-Game
+rm -rf /var/db/repos/The-Anime-Game
 #+end_src
 
 Then purge the repository this is done differently, depending on how you installed the repository before.
