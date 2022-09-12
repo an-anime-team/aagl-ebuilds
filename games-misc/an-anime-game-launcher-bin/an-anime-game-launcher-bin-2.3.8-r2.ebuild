@@ -28,7 +28,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}"
-
+BDEPEND="app-admin/chrpath"
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P} || die
@@ -38,6 +38,7 @@ src_unpack() {
 src_prepare(){
 	chmod +x ${P}.AppImage
 	./${P}.AppImage --appimage-extract || die "Extraction Failed"
+	chrpath -d "squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	default
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
@@ -50,8 +51,10 @@ src_install(){
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
     exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
-	doexe "squashfs-root/public/discord-rpc/discord-rpc" "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
+	doexe "squashfs-root/public/discord-rpc/discord-rpc"
 
+	doins /usr/$(get_libdir)
+	doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
 	insinto "/usr/lib/${PN}/public"
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
