@@ -47,7 +47,7 @@ src_prepare(){
 }
 
 src_install(){
-	into "/usr/lib/${PN}/discord-rpc/" # set path for library
+	into "/usr/lib/" # set path for library
     dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so" # install lib
 
 	insinto "/usr/lib/${PN}"
@@ -79,7 +79,7 @@ src_install(){
 	doins "${PN}.desktop"
 
 	cd ${FILESDIR}
-	insinto "/usr/lib/an-anime-game-launcher/public/discord-rpc/" # set path for discord-rpc binary
+	insinto "/usr/lib/${PN}/public/discord-rpc/" # set path for discord-rpc binary
 	doins "discord-rpc"  # install discord-rpc to path
 
 	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc" # set permissions for discord-rpc
