@@ -1,7 +1,7 @@
 # copyright 2022 ShinobuNarusaka, Pascal Jager
 # Distributed under the terms of the GNU General Public License v3
 
-EAPI=8
+EAPI=7
 
 inherit xdg-utils optfeature
 
@@ -38,7 +38,6 @@ src_unpack() {
 src_prepare(){
 	chmod +x ${P}.AppImage
 	./${P}.AppImage --appimage-extract || die "Extraction Failed"
-	chrpath -d "squashfs-root/public/discord-rpc/discord-rpc" || die "Patching Library Failed"
 	default
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
@@ -46,14 +45,16 @@ src_prepare(){
 }
 
 src_install(){
-	into "/usr/lib/"
+    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc" # set path for discord-rpc binary
+	doexe "squashfs-root/public/discord-rpc/discord-rpc"  # set path for
+	into "/usr/lib/${PN}/discord-rpc/"
     dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
+
+
 	insinto "/usr/lib/${PN}"
 	doins "squashfs-root/resources.neu"
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
-    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
-	doexe "squashfs-root/public/discord-rpc/discord-rpc"
 	insinto "/usr/lib/${PN}/public"
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
@@ -70,13 +71,13 @@ src_install(){
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
-	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	optfeature "Appindicator support" dev-libs/libayatana-appindicator dev-libs/libayatana-appindicator-bin
+	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 }
 pkg_postrm() {
 	xdg_desktop_database_update
