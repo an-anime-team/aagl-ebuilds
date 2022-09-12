@@ -55,7 +55,7 @@ src_install(){
 
 	doins /usr/$(get_libdir)
 	doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
-	insinto "/usr/lib/${PN}/public"
+	insinto "/usr/lib/"
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
 	doins -r "squashfs-root/public/hdiffpatch"
