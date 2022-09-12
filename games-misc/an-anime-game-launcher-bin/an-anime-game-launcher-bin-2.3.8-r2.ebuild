@@ -11,7 +11,7 @@ SRC_URI="https://github.com/an-anime-team/an-anime-game-launcher/releases/downlo
 
 LICENSE="GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 x86"
 PATCHES=( "${FILESDIR}/${PN}-launcher.patch" "${FILESDIR}/${P}-desktop.patch" )
 
 DEPEND="
