@@ -1,0 +1,14 @@
+BDEPEND=app-admin/chrpath
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=net-libs/webkit-gtk dev-util/xdelta[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu
+DESCRIPTION=Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package
+EAPI=8
+HOMEPAGE=https://github.com/an-anime-team/an-anime-game-launcher
+INHERIT=xdg-utils optfeature
+KEYWORDS=~amd64
+LICENSE=GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense
+RDEPEND=net-libs/webkit-gtk dev-util/xdelta[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu
+SLOT=0
+SRC_URI=https://github.com/an-anime-team/an-anime-game-launcher/releases/download/2.3.8/an-anime-game-launcher-2.3.8.AppImage -> an-anime-game-launcher-bin-2.3.8.AppImage
+_eclasses_=xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	optfeature	1a2157392a869265b2afcb63a26c12ac
+_md5_=e5760ff0e2ef2b0fed760bec35ab7476
