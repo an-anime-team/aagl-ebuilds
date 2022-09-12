@@ -46,16 +46,14 @@ src_prepare(){
 }
 
 src_install(){
+	insinto "/usr/lib/"
+    doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
 	insinto "/usr/lib/${PN}"
 	doins "squashfs-root/resources.neu"
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
     exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
 	doexe "squashfs-root/public/discord-rpc/discord-rpc"
-
-	doins "/usr/lib/"
-	doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
-
 	insinto "/usr/lib/${PN}/public"
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
@@ -72,7 +70,6 @@ src_install(){
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
-
 	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 
 }
