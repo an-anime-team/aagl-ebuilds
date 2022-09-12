@@ -28,7 +28,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}"
-BDEPEND="app-admin/chrpath"
+
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P} || die
@@ -53,9 +53,10 @@ src_install(){
     exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc"
 	doexe "squashfs-root/public/discord-rpc/discord-rpc"
 
-	doins /usr/$(get_libdir)
+	doins "/usr/lib/"
 	doins "squashfs-root/public/discord-rpc/libdiscord-rpc.so"
-	insinto "/usr/lib/"
+
+	insinto "/usr/lib/${PN}/public"
 	doins -r "squashfs-root/public/discord-rpc"
 	doins -r "squashfs-root/public/dxvks.yaml"
 	doins -r "squashfs-root/public/hdiffpatch"
