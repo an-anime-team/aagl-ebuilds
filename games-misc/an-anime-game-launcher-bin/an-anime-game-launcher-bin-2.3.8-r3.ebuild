@@ -9,7 +9,7 @@ DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-ch
 HOMEPAGE="https://github.com/an-anime-team/an-anime-game-launcher"
 SRC_URI="https://github.com/an-anime-team/an-anime-game-launcher/releases/download/2.3.8/an-anime-game-launcher-2.3.8.AppImage -> ${P}.AppImage"
 
-LICENSE="GPL-3 0BSD Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT Unlicense"
+LICENSE="GPL-3 0BSD Apache-2.0 BSD-2 BSD ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 PATCHES=( "${FILESDIR}/${PN}-launcher.patch" "${FILESDIR}/${P}-desktop.patch" )
@@ -32,8 +32,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="dev-util/patchelf"
 
 src_unpack() {
-	mkdir ${WORKDIR}/${P} || die
-	cp ${DISTDIR}/${P}.AppImage ${WORKDIR}/${P} || die
+	mkdir "${WORKDIR}"/${P} || die
+	cp "${DISTDIR}"/${P}.AppImage "${WORKDIR}"/${P} || die
 }
 
 src_prepare(){
@@ -52,13 +52,14 @@ src_install(){
 	exeinto "/usr/lib/${PN}"
 	doexe "squashfs-root/an-anime-game-launcher"
 	doins -r "squashfs-root/public"
+	exeinto "/usr/lib/${PN}/public/discord-rpc"
+	doexe "squashfs-root/public/discord-rpc/discord-rpc"
 	insinto "/usr/share/pixmaps"
 	doins "${PN}.png"
 	exeinto "/usr/bin"
 	doexe "${PN}"
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
-	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc"
 }
 
 pkg_postinst() {
