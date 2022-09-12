@@ -40,7 +40,6 @@ src_prepare(){
 	./${P}.AppImage --appimage-extract || die "Extraction Failed"
 	default
 
-	rm "squashfs-root/public/discord-rpc/discord-rpc"
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
 	mv "squashfs-root/an-anime-game-launcher.desktop" "${PN}.desktop" || die
