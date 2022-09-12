@@ -45,12 +45,9 @@ src_prepare(){
 }
 
 src_install(){
-    exeinto "/usr/lib/an-anime-game-launcher/public/discord-rpc" # set path for discord-rpc binary
-	doexe "${FILESDIR}/discord-rpc"  # install discord-rpc to path
+
 	into "/usr/lib/${PN}/discord-rpc/" # set path for library
     dolib.so "squashfs-root/public/discord-rpc/libdiscord-rpc.so" # install lib
-
-	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc" # set permissions for discord-rpc
 
 	insinto "/usr/lib/${PN}"
 	doins "squashfs-root/resources.neu"
@@ -80,6 +77,11 @@ src_install(){
 	insinto "/usr/share/applications/"
 	doins "${PN}.desktop"
 
+	cd ${FILESDIR}
+	insinto "/usr/lib/an-anime-game-launcher/public/discord-rpc/" # set path for discord-rpc binary
+	doins "discord-rpc"  # install discord-rpc to path
+
+	fperms 755 "/usr/lib/${PN}/public/discord-rpc/discord-rpc" # set permissions for discord-rpc
 }
 
 pkg_postinst() {
