@@ -36,7 +36,7 @@ emaint sync -r The-Anime-Game
 *** Manually
 If /etc/portage/repos.conf is a file, add the following lines to that
 file, if /etc/portage/repos.conf is a directory, add a new file with
-file ~touch /etc/portage/repos.conf/theanimegame.conf~ and put the
+~touch /etc/portage/repos.conf/theanimegame.conf~ and put the
 following into it:
 
 #+begin_src bash
