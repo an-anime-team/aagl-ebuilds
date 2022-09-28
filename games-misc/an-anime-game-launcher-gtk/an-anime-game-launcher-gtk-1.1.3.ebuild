@@ -285,14 +285,6 @@ DEPEND="
 	sys-libs/glibc
 	sys-auth/polkit
 "
-	# net-libs/webkit-gtk
-	# x11-libs/libnotify
-	# sys-auth/polkit
-	# dev-libs/libdbusmenu
-	# app-emulation/dxvk-bin
-	# app-emulation/winetricks
-	# virtual/wine
-	# "
 
 RDEPEND="${DEPEND}"
 
@@ -315,6 +307,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
+src_prepare() {
+	default
+	# patch the .desktop file to work in non-AppImage environment
+	sed -i 's/Icon=icon/Icon=anime-game-launcher/' assets/anime-game-launcher.desktop
+	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/' assets/anime-game-launcher.desktop
+}
+
 src_unpack() {
 	cargo_src_unpack
 	git-r3_fetch $EGIT_REPO_URI_CORE "${anime_game_core_commit}" || die
@@ -327,11 +326,10 @@ src_unpack() {
 
 src_install() {
 	cargo_src_install
-	cd "${FILESDIR}"
-	insinto "/usr/share/applications/"
-	doins "anime-game-launcher.desktop"
-	insinto "/usr/share/pixmaps"
-	doins "anime-game-launcher.png"
+	insinto /usr/share/applications/
+	doins assets/anime-game-launcher.desktop
+	insinto /usr/share/pixmaps/
+	newins assets/images/icon.png anime-game-launcher.png
 }
 
 pkg_postinst() {

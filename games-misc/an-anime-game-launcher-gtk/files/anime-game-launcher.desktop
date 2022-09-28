@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Anime Game Launcher GTK
-Comment=A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-Exec=anime-game-launcher
-Terminal=false
-Type=Application
-Icon=anime-game-launcher
-Categories=Game
