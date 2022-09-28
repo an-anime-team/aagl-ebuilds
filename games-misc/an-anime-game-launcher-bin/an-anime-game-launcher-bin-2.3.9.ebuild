@@ -5,9 +5,9 @@ EAPI=8
 
 inherit xdg-utils optfeature
 
-DESCRIPTION="Open Source An Anime Game launcher for Linux with automatic anti-cheat patching and telemetry disabling, binary package"
+DESCRIPTION="Anime Game launcher with automatic anti-cheat patching, binary package"
 HOMEPAGE="https://github.com/an-anime-team/an-anime-game-launcher"
-SRC_URI="https://github.com/an-anime-team/an-anime-game-launcher/releases/download/2.3.8/an-anime-game-launcher-2.3.8.AppImage -> ${P}.AppImage"
+SRC_URI="https://github.com/an-anime-team/an-anime-game-launcher/releases/download/${PV}/an-anime-game-launcher-${PV}.AppImage -> ${P}.AppImage"
 
 LICENSE="GPL-3 0BSD Apache-2.0 BSD-2 BSD ISC MIT Unlicense"
 SLOT="0"
@@ -16,7 +16,7 @@ PATCHES=( "${FILESDIR}/${PN}-launcher.patch" "${FILESDIR}/${P}-desktop.patch" )
 
 DEPEND="
 	net-libs/webkit-gtk
-	dev-util/xdelta[lzma]
+	dev-util/xdelta:3[lzma]
 	app-arch/tar
 	dev-vcs/git
 	app-arch/unzip
