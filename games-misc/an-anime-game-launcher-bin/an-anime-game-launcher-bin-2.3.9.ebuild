@@ -12,7 +12,7 @@ SRC_URI="https://github.com/an-anime-team/an-anime-game-launcher/releases/downlo
 LICENSE="GPL-3 0BSD Apache-2.0 BSD-2 BSD ISC MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
-PATCHES=( "${FILESDIR}/${PN}-launcher.patch" "${FILESDIR}/${P}-desktop.patch" )
+PATCHES=( "${FILESDIR}/${PN}-launcher.patch"  )
 
 DEPEND="
 	net-libs/webkit-gtk
@@ -44,6 +44,13 @@ src_prepare(){
 	mv "squashfs-root/public/icons/256x256.png" "${PN}.png" || die
 	mv "squashfs-root/AppRun" "${PN}" || die
 	mv "squashfs-root/an-anime-game-launcher.desktop" "${PN}.desktop" || die
+	# patch the .desktop file to work in non-AppImage environment
+	sed -i 's/Icon=64x64/Icon=an-anime-game-launcher-bin/' an-anime-game-launcher-bin.desktop
+	sed -i 's/Exec=AppRun/Exec=an-anime-game-launcher-bin/' an-anime-game-launcher-bin.desktop
+	sed -i 's/;//' an-anime-game-launcher-bin.desktop
+	sed -i '/X-AppImage-Version=/d' an-anime-game-launcher-bin.desktop
+	echo "Comment=Anime Game launcher with automatic anti-cheat patching, binary package" >> an-anime-game-launcher-bin.desktop
+	sed '/^$/d' an-anime-game-launcher-bin.desktop
 }
 
 src_install(){
