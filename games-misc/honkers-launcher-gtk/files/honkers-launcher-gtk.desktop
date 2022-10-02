@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Honkers Launcher GTK
+Icon=honkers-launcher-gtk
+Exec=honkers-launcher
+Type=Application
+Categories=Game
+Terminal=false
