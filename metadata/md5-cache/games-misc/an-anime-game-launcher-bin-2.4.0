@@ -1,0 +1,14 @@
+BDEPEND=dev-util/patchelf
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=net-libs/webkit-gtk dev-util/xdelta:3[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu
+DESCRIPTION=Anime Game launcher with automatic anti-cheat patching, binary package
+EAPI=8
+HOMEPAGE=https://github.com/an-anime-team/an-anime-game-launcher
+INHERIT=xdg-utils optfeature desktop
+KEYWORDS=~amd64
+LICENSE=GPL-3 0BSD Apache-2.0 BSD-2 BSD ISC MIT Unlicense
+RDEPEND=net-libs/webkit-gtk dev-util/xdelta:3[lzma] app-arch/tar dev-vcs/git app-arch/unzip net-misc/curl app-arch/cabextract x11-libs/libnotify sys-auth/polkit dev-libs/libdbusmenu
+SLOT=0
+SRC_URI=https://github.com/an-anime-team/an-anime-game-launcher/releases/download/2.4.0/an-anime-game-launcher-2.4.0.AppImage -> an-anime-game-launcher-bin-2.4.0.AppImage
+_eclasses_=xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	optfeature	1a2157392a869265b2afcb63a26c12ac	desktop	22952d8f27cac191d75529d4c38e6bfa
+_md5_=06780e6727c0bcc41232b0f65526af5d
