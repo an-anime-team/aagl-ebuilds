@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils optfeature
+inherit xdg-utils optfeature desktop
 
 DESCRIPTION="Anime Game launcher with automatic anti-cheat patching, binary package"
 HOMEPAGE="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -55,18 +55,16 @@ src_prepare(){
 
 src_install(){
 	insinto "/usr/lib/${PN}"
-	doins "squashfs-root/resources.neu"
+	doins squashfs-root/resources.neu
 	exeinto "/usr/lib/${PN}"
-	doexe "squashfs-root/an-anime-game-launcher"
-	doins -r "squashfs-root/public"
+	doexe squashfs-root/an-anime-game-launcher
+	doins -r squashfs-root/public
 	exeinto "/usr/lib/${PN}/public/discord-rpc"
-	doexe "squashfs-root/public/discord-rpc/discord-rpc"
-	insinto "/usr/share/pixmaps"
-	doins "${PN}.png"
-	exeinto "/usr/bin"
+	doexe squashfs-root/public/discord-rpc/discord-rpc
+	exeinto /usr/bin
 	doexe "${PN}"
-	insinto "/usr/share/applications/"
-	doins "${PN}.desktop"
+	doicon "${PN}.png"
+	domenu "${PN}.desktop"
 }
 
 pkg_postinst() {
