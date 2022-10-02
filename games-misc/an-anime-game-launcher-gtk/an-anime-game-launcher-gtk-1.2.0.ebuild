@@ -11,8 +11,8 @@ EAPI=8
 # build this ebuild for.
 # 3. Note the commit number of anime-game-core (the code after anime-game-core @ xxxxxxx), components and blueprint compiler
 # 4. Put the commit numbers into the variables below:
-anime_game_core_commit=9f75c32
-components_commit=6ae7311
+anime_game_core_commit=6f2c976
+components_commit=7ea12b3
 blueprint_compiler_commit=6ad1433
 
 CRATES="
@@ -245,7 +245,7 @@ CRATES="
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-x86_64-pc-windows-gnu-0.4.0
-	wincompatlib-0.1.0
+	wincompatlib-0.1.2
 	windows-0.37.0
 	windows-sys-0.36.1
 	windows_aarch64_msvc-0.36.1
@@ -290,7 +290,7 @@ RDEPEND="${DEPEND}"
 
 BDEPEND="virtual/rust"
 
-inherit cargo git-r3 xdg-utils
+inherit cargo git-r3 xdg-utils desktop
 
 DESCRIPTION="Anime Game launcher with automatic anti-cheat patching, Rust/ Gtk version"
 HOMEPAGE="https://github.com/an-anime-team/an-anime-game-launcher-gtk"
@@ -326,10 +326,8 @@ src_unpack() {
 
 src_install() {
 	cargo_src_install
-	insinto /usr/share/applications/
-	doins assets/anime-game-launcher.desktop
-	insinto /usr/share/pixmaps/
-	newins assets/images/icon.png anime-game-launcher.png
+	domenu assets/anime-game-launcher.desktop
+	newicon assets/images/icon.png anime-game-launcher.png
 }
 
 pkg_postinst() {
