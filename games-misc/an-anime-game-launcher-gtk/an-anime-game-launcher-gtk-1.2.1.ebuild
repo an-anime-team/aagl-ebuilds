@@ -11,11 +11,12 @@ EAPI=8
 # build this ebuild for.
 # 3. Note the commit number of anime-game-core (the code after anime-game-core @ xxxxxxx), components and blueprint compiler
 # 4. Put the commit numbers into the variables below:
-anime_game_core_commit=c6b4b3ed23d0e2fe6258e2e32de0c7127f678955
+anime_game_core_commit=73d3644761bef06cfc16e4e4bc4f9b9af3c50139
 components_commit=ff194493e4614bc8c12cffed840a430651e17060
 blueprint_compiler_commit=bc15ac9efbb762e9e960badb5bf35655e5d8603b
 
-CRATES="	adler-1.0.2
+CRATES="
+	adler-1.0.2
 	aes-0.7.5
 	aho-corasick-0.7.18
 	anyhow-1.0.58
@@ -268,7 +269,8 @@ CRATES="	adler-1.0.2
 	zstd-safe-4.1.6+zstd.1.5.2
 	zstd-sys-1.6.3+zstd.1.5.2
 	zvariant-3.6.0
-	zvariant_derive-3.6.0"
+	zvariant_derive-3.6.0
+"
 
 DEPEND="
 	gui-libs/libadwaita
