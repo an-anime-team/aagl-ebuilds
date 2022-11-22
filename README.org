@@ -51,17 +51,13 @@ Then sync your local ebuild cache with ~emaint sync -r The-Anime-Game~
 
 ** Installing the launcher
 After adding the repository you can emerge the launchers. There are
-currently four different versions for two different games.
-The Anime Game launcher [[https://github.com/an-anime-team/an-anime-game-launcher][Typescript version]] / [[https://github.com/an-anime-team/an-anime-game-launcher-gtk][Rust/ Gtk version]] and the Honkers launcher [[https://github.com/an-anime-team/honkers-launcher][Typescript version]] / [[https://github.com/an-anime-team/honkers-launcher-gtk][Rust/ Gtk version]].  Visit their respective
+currently two different versions for one game.
+The Anime Game launcher [[https://github.com/an-anime-team/an-anime-game-launcher][Typescript version]] / [[https://github.com/an-anime-team/an-anime-game-launcher-gtk][Rust/ Gtk version]] Visit their respective
 repositories for further information on them.
 #+begin_src bash
 emerge --ask games-misc/an-anime-game-launcher-bin # typescript version
 # OR
 emerge --ask games-misc/an-anime-game-launcher-gtk # rust/ gtk version
-# OR
-emerge --ask games-misc/honkers-launcher-bin # honkers launcher typescript version
-# OR
-emerge --ask games-misc/honkers-launcher-gtk # honkers launcher rust/ gtk version
 #+end_src
 
 This can take a while if you don't have wine installed.
@@ -80,10 +76,6 @@ To uninstall just deselect the package and run a depclean
 emerge --deselect an-anime-game-launcher-bin
 # OR
 emerge --deselect an-anime-game-launcher-gtk
-# OR
-emerge --deselect honkers-launcher-bin
-# OR
-emerge --deselect honkers-launcher-gtk
 
 # in all cases depclean to remove the unneeded packages
 emerge --depclean
