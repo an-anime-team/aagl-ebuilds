@@ -51,8 +51,8 @@ Then sync your local ebuild cache with ~emaint sync -r The-Anime-Game~
 
 ** Installing the launcher
 After adding the repository you can emerge the launchers. There are
-currently two different versions for one game.
-The Anime Game launcher [[https://github.com/an-anime-team/an-anime-game-launcher][Typescript version]] / [[https://github.com/an-anime-team/an-anime-game-launcher-gtk][Rust/ Gtk version]] Visit their respective
+currently two different versions for the launcher:
+The Anime Game launcher [[https://github.com/an-anime-team/an-anime-game-launcher][Typescript version]] and the [[https://github.com/an-anime-team/an-anime-game-launcher-gtk][Rust/ Gtk version]]. Visit their respective
 repositories for further information on them.
 #+begin_src bash
 emerge --ask games-misc/an-anime-game-launcher-bin # typescript version
