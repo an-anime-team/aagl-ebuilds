@@ -290,7 +290,7 @@ RDEPEND="${DEPEND}"
 
 BDEPEND="virtual/rust"
 
-inherit cargo git-r3 xdg-utils desktop
+inherit cargo xdg-utils desktop
 
 DESCRIPTION="Anime Game launcher with automatic anti-cheat patching, Rust/ Gtk version"
 HOMEPAGE="https://github.com/an-anime-team/an-anime-game-launcher-gtk"
