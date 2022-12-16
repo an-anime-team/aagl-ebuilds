@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 PATCHES=( "${FILESDIR}/${PN}-launcher.patch"  )
 
 DEPEND="
-	net-libs/webkit-gtk
+	net-libs/webkit-gtk:4
 	dev-util/xdelta:3[lzma]
 	app-arch/tar
 	dev-vcs/git
