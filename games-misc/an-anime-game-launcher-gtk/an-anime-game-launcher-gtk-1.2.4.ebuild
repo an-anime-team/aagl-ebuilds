@@ -7,13 +7,14 @@ EAPI=8
 
 # To update the ebuild to a new release of an-anime-game-launcher-gtk:
 # 1. Rename this ebuild to the new version
-# 2. Go to https://github.com/an-anime-team/an-anime-game-launcher-gtk, open the files of the commit of the version you want to
-# build this ebuild for.
-# 3. Note the commit number of anime-game-core (the code after anime-game-core @ xxxxxxx), components and blueprint compiler
-# 4. Put the commit numbers into the variables below:
-anime_game_core_commit=73d3644761bef06cfc16e4e4bc4f9b9af3c50139
-components_commit=ff194493e4614bc8c12cffed840a430651e17060
-blueprint_compiler_commit=bc15ac9efbb762e9e960badb5bf35655e5d8603b
+# 2. Go to https://github.com/an-anime-team/an-anime-game-launcher-gtk, open
+# 	the files of the commit of the version you want to build this ebuild for.
+# 3. Note the commit number of anime-game-core
+# 	(the code after anime-game-core @ xxxxxxx), components and blueprint compiler.
+# 4. Put the commit hashs into the variables below:
+anime_game_core_commit=ea02d1c
+components_commit=5580f7b
+blueprint_compiler_commit=039d88a
 
 CRATES="
 	adler-1.0.2
@@ -42,6 +43,7 @@ CRATES="
 	bzip2-sys-0.1.11+1.0.8
 	cache-padded-1.2.0
 	cached-0.40.0
+	cached-0.41.0
 	cached_proc_macro-0.15.0
 	cached_proc_macro_types-0.1.0
 	cairo-rs-0.16.1
@@ -136,7 +138,7 @@ CRATES="
 	memoffset-0.6.5
 	miniz_oxide-0.5.3
 	nix-0.23.1
-	ntapi-0.3.7
+	ntapi-0.4.0
 	num_cpus-1.13.1
 	num_enum-0.5.7
 	num_enum_derive-0.5.7
@@ -176,7 +178,7 @@ CRATES="
 	rayon-core-1.9.3
 	redox_syscall-0.2.13
 	redox_users-0.4.3
-	regex-1.6.0
+	regex-1.7.0
 	regex-syntax-0.6.27
 	remove_dir_all-0.5.3
 	rfd-0.10.0
@@ -207,7 +209,7 @@ CRATES="
 	strsim-0.10.0
 	subtle-2.4.1
 	syn-1.0.98
-	sysinfo-0.26.1
+	sysinfo-0.27.1
 	system-deps-6.0.2
 	tar-0.4.38
 	tempfile-3.3.0
@@ -245,7 +247,7 @@ CRATES="
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-x86_64-pc-windows-gnu-0.4.0
-	wincompatlib-0.1.2
+	wincompatlib-0.1.3
 	windows-0.37.0
 	windows-sys-0.36.1
 	windows_aarch64_msvc-0.36.1
@@ -282,7 +284,7 @@ DEPEND="
 	net-misc/curl
 	>=gui-libs/gtk-4
 	net-misc/iputils
-	sys-libs/glibc
+	virtual/libc
 	sys-auth/polkit
 "
 
@@ -298,7 +300,7 @@ SRC_URI="
 	https://github.com/an-anime-team/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/an-anime-team/anime-game-core/archive/${anime_game_core_commit}.tar.gz
 	https://github.com/an-anime-team/components/archive/${components_commit}.tar.gz
-	https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/${blueprint_compiler_commit}/blueprint-compiler-${blueprint_compiler_commit}.tar.gz
+	https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/${blueprint_compiler_commit}/blueprint-compiler-${blueprint_compiler_commit}.tar.bz2
 	$(cargo_crate_uris)
 "
 
@@ -307,27 +309,27 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
+src_unpack() {
+	cargo_src_unpack
+	# renaming the git submodules and linking them where cargo expects them
+	rm -rf "${S}"/anime-game-core || die
+	mv "${WORKDIR}"/anime-game-core-* "${WORKDIR}/anime-game-core" || die
+	ln -s "${WORKDIR}/anime-game-core" "${S}"/anime-game-core || die
+	rm -rf "${S}"/components || die
+	mv "${WORKDIR}"/components-* "${WORKDIR}/components" || die
+	ln -s "${WORKDIR}/components" "${S}"/components || die
+	rm -rf "${S}"/blueprint-compiler || die
+	mv "${WORKDIR}"/blueprint-compiler-* "${WORKDIR}/blueprint-compiler" || die
+	ln -s "${WORKDIR}/blueprint-compiler" "${S}"/blueprint-compiler || die
+}
+
 src_prepare() {
 	default
 	# patch the .desktop file to work in non-AppImage environment
-	sed -i 's/Icon=icon/Icon=anime-game-launcher/' assets/anime-game-launcher.desktop
-	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/' assets/anime-game-launcher.desktop
-}
-
-src_unpack() {
-	cargo_src_unpack
-	rm -rf "${S}"/anime-game-core
-	ln -s "${WORKDIR}/anime-game-core-${anime_game_core_commit}" "${S}"/anime-game-core
-	rm -rf "${S}"/components
-	ln -s "${WORKDIR}/components-${components_commit}" "${S}"/components
-	rm -rf "${S}"/blueprint-compiler
-	ln -s "${WORKDIR}/blueprint-compiler-${blueprint_compiler_commit}" "${S}"/blueprint-compiler
-	# git-r3_fetch $EGIT_REPO_URI_CORE "${anime_game_core_commit}" || die
-	# git-r3_fetch $EGIT_REPO_URI_COMP "${components_commit}" || die
-	# git-r3_fetch $EGIT_REPO_URI_BC "${blueprint_compiler_commit}"
-	# git-r3_checkout $EGIT_REPO_URI_CORE "${WORKDIR}/${P}/anime-game-core" || die
-	# git-r3_checkout $EGIT_REPO_URI_COMP "${WORKDIR}/${P}/components" || die
-	# git-r3_checkout $EGIT_REPO_URI_BC "${WORKDIR}/${P}/blueprint-compiler" || die
+	sed -i 's/Icon=icon/Icon=anime-game-launcher/' assets/anime-game-launcher.desktop || die
+	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/' assets/anime-game-launcher.desktop || die
+	# avoid stripping by the build system, we do that ourselves in Gentoo
+	sed -i 's/strip = true/strip = false/' Cargo.toml || die
 }
 
 src_install() {
