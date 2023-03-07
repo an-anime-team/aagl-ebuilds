@@ -29,25 +29,25 @@ emerge --ask app-eselect/eselect-repository
 Now add the repository with
 
 #+begin_src bash
-eselect repository add an-anime-team git https://github.com/an-anime-team/aagl-ebuilds.git
-emaint sync -r an-anime-team
+eselect repository add The-Anime-Game git https://github.com/an-anime-team/aagl-ebuilds.git
+emaint sync -r The-Anime-Game
 #+end_src
 
 *** Manually
 If /etc/portage/repos.conf is a file, add the following lines to that
 file, if /etc/portage/repos.conf is a directory, add a new file with
-~touch /etc/portage/repos.conf/ananimeteam.conf~ and put the
+~touch /etc/portage/repos.conf/theanimegame.conf~ and put the
 following into it:
 
 #+begin_src bash
-[an-anime-team]
-location = /var/db/repos/ananimeteam
+[The-Anime-Game]
+location = /var/db/repos/theanimegame
 sync-type = git
 sync-uri = https://github.com/an-anime-team/aagl-ebuilds.git
 priority = 100
 #+end_src
 
-Then sync your local ebuild cache with ~emaint sync -r an-anime-game~
+Then sync your local ebuild cache with ~emaint sync -r The-Anime-Game~
 
 ** Installing the launcher
 After adding the repository you can emerge the launcher.
@@ -73,9 +73,9 @@ emerge --depclean
 
 To remove the whole repository from your system execute:
 #+begin_src bash
-rm /etc/portage/repos.conf/ananimeteam.conf # if the repository was manually added
+rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
 #OR
-eselect repository disable -f an-anime-team # if the repository was added via eselect
+eselect repository disable -f The-Anime-Game # if the repository was added via eselect
 #+end_src
 
 * Trouble after Gitlab migration / syncing trouble in general
@@ -88,9 +88,9 @@ rm -rf /var/db/repos/The-Anime-Game
 
 Then purge the repository this is done differently, depending on how you installed the repository before.
 #+begin_src bash
-rm /etc/portage/repos.conf/ananimeteam.conf # if the repository was manually added
+rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
 #OR
-eselect repository disable -f an-anime-team # if the repository was added via eselect
+eselect repository disable -f The-Anime-Game # if the repository was added via eselect
 #+end_src
 
 Now add the new repository according to the instructions in the [[Installation]] section.
