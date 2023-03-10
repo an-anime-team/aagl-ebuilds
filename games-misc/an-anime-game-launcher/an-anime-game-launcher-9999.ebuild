@@ -48,7 +48,7 @@ src_unpack() {
 src_prepare() {
 	default
 	# patch the .desktop file to work in non-AppImage environment
-	sed -i 's/Icon=icon/Icon=anime-game-launcher/' assets/anime-game-launcher.desktop || die
+	sed -i 's/Icon=icon/Icon=moe.launcher.an-anime-game-launcher/' assets/anime-game-launcher.desktop || die
 	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/' assets/anime-game-launcher.desktop || die
 	# avoid stripping by the build system, we do that ourselves in Gentoo
 	sed -i 's/strip = true/strip = false/' Cargo.toml || die
@@ -62,7 +62,7 @@ src_configure() {
 src_install() {
 	cargo_src_install
 	domenu assets/anime-game-launcher.desktop
-	newicon assets/images/icon.png anime-game-launcher.png
+	newicon assets/images/icon.png moe.launcher.an-anime-game-launcher.png
 }
 
 pkg_postinst() {
