@@ -12,4 +12,4 @@ RDEPEND=gui-libs/libadwaita app-arch/tar app-arch/unzip dev-util/xdelta:3[lzma] 
 RESTRICT=mirror
 SLOT=0
 _eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	cargo	33a6fedd9e309870a65565d0b995fb41	desktop	021728fdc1b03b36357dbc89489e0f0d	git-r3	2347f8fe2d392b2a091191f94be37e6f	xdg-utils	ac0e315a3688929e34ac75b139e7349a
-_md5_=fca3f866280cc5806e079e36808fcf8b
+_md5_=ec239539d13a773672c0901c1a920c9a
