@@ -1,15 +1,16 @@
-BDEPEND=>=virtual/rust-1.63 >=virtual/rust-1.53 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=virtual/rust-1.63 >=virtual/rust-1.53
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
 DEPEND=gui-libs/libadwaita app-arch/tar app-arch/unzip dev-util/xdelta:3[lzma] app-arch/cabextract dev-vcs/git net-misc/curl >=gui-libs/gtk-4 net-misc/iputils virtual/libc sys-auth/polkit
 DESCRIPTION=Anime Game launcher with automatic anti-cheat patching
 EAPI=8
 HOMEPAGE=https://github.com/an-anime-team/an-anime-game-launcher
-INHERIT=cargo desktop git-r3 xdg-utils
+INHERIT=cargo xdg-utils desktop
 IUSE=debug
+KEYWORDS=~amd64
 LICENSE=GPL-3 Apache-2.0 BSD CC0-1.0 GPL-3 ISC MIT Unicode-DFS-2016 ZLIB
-PROPERTIES=live
 RDEPEND=gui-libs/libadwaita app-arch/tar app-arch/unzip dev-util/xdelta:3[lzma] app-arch/cabextract dev-vcs/git net-misc/curl >=gui-libs/gtk-4 net-misc/iputils virtual/libc sys-auth/polkit !!games-misc/an-anime-game-launcher-gtk
 RESTRICT=mirror
 SLOT=0
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	cargo	2076d5b84dfa54f78d70aea5e10dde87	desktop	021728fdc1b03b36357dbc89489e0f0d	git-r3	c57c50c922e121043788de0b40ada60a	xdg-utils	ac0e315a3688929e34ac75b139e7349a
-_md5_=ec239539d13a773672c0901c1a920c9a
+SRC_URI=https://github.com/Schievel1/aagl-mirror/releases/download/3.2.1/aagl-3.2.1-complete.tar.gz https://github.com/Schievel1/aagl-mirror/releases/download/3.2.1/aagl-3.2.1-vendor.tar.gz
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	cargo	2076d5b84dfa54f78d70aea5e10dde87	xdg-utils	ac0e315a3688929e34ac75b139e7349a	desktop	021728fdc1b03b36357dbc89489e0f0d
+_md5_=259f6606cee9ef6bfd155b2e74341dca
