@@ -30,6 +30,8 @@ Now add the repository with
 
 #+begin_src bash
 eselect repository add The-Anime-Game git https://github.com/an-anime-team/aagl-ebuilds.git
+#+end_src
+#+begin_src bash
 emaint sync -r The-Anime-Game
 #+end_src
 
@@ -54,6 +56,10 @@ After adding the repository you can emerge the launcher.
 #+begin_src bash
 emerge --ask games-misc/an-anime-game-launcher
 #+end_src
+Similarly to install the honkers launcher use the command
+#+begin_src bash
+emerge --ask games-misc/honkers-launcher
+#+end_src
 
 ** Fixing crash when opening config
 If the launcher crashes when you click on the little cog wheel to open the config, it is likely because it can not find the folder where different versions of dxvk should be stored. (See also https://github.com/an-anime-team/an-anime-game-launcher-gtk/issues/3)
@@ -66,15 +72,22 @@ mkdir ~/.local/share/anime-game-launcher/dxvks
 To uninstall just deselect the package and run a depclean
 #+begin_src bash
 emerge --deselect an-anime-game-launcher
-
-# in all cases depclean to remove the unneeded packages
+#+end_src
+To uninstall the honkers launcher use
+#+begin_src bash
+emerge --deselect an-anime-game-launcher
+#+end_src
+In all cases use depclean to remove the unneeded packages
+#+begin_src bash
 emerge --depclean
 #+end_src
 
 To remove the whole repository from your system execute:
 #+begin_src bash
 rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
-#OR
+#+end_src
+or
+#+begin_src bash
 eselect repository disable -f The-Anime-Game # if the repository was added via eselect
 #+end_src
 
@@ -89,7 +102,9 @@ rm -rf /var/db/repos/The-Anime-Game
 Then purge the repository this is done differently, depending on how you installed the repository before.
 #+begin_src bash
 rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
-#OR
+#+end_src
+or
+#+begin_src bash
 eselect repository disable -f The-Anime-Game # if the repository was added via eselect
 #+end_src
 
