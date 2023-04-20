@@ -2,8 +2,29 @@
 #+Author: Pascal Jaeger
 #+OPTIONS: toc:3
 
+* THIS REPO IS NOT MAINTAINED ANYMORE!
+Please use [[https://github.com/an-anime-team/gentoo-ebuilds][the new repository]].
+
+** Migtrating from this repo to the new repository:
+To remove this repository from your system execute:
+#+begin_src bash
+rm /etc/portage/repos.conf/theanimegame.conf # if the repository was manually added
+#+end_src
+or
+#+begin_src bash
+eselect repository disable -f The-Anime-Game # if the repository was added via eselect
+#+end_src
+And delete the locally stored repository data:
+#+begin_src bash
+rm -rf /var/db/repos/The-Anime-Game
+#+end_src
+
+After that add the new repository (for instructions look there). When there is a new version of a launcher, portage will update it from there.
+
 * Table of contents :TOC_3_gh:QUOTE:
 #+BEGIN_QUOTE
+- [[#this-repo-is-not-maintained-anymore][THIS REPO IS NOT MAINTAINED ANYMORE!]]
+  - [[#migtrating-from-this-repo-to-the-new-repository][Migtrating from this repo to the new repository:]]
 - [[#installation][Installation]]
   - [[#adding-the-repository][Adding the repository]]
     - [[#with-eselect-repository][With eselect-repository]]
